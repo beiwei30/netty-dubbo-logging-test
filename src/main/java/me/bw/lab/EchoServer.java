@@ -56,6 +56,7 @@ public class EchoServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
+                            socketChannel.pipeline().addLast(new io.netty.handler.logging.LoggingHandler());
                             socketChannel.pipeline().addLast(serverHandler);
                         }
                     });
